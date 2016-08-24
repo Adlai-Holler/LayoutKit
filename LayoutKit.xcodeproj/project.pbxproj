@@ -184,6 +184,9 @@
 		7E0FBE851D3C4E2E008B0933 /* ConfigurableLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0FBE841D3C4E2E008B0933 /* ConfigurableLayout.swift */; };
 		7E9AE4401D59573000D5A926 /* ConfigurableLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0FBE841D3C4E2E008B0933 /* ConfigurableLayout.swift */; };
 		7EA3A6AB1CD93C60004C529C /* PositionedLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A6AA1CD93C60004C529C /* PositionedLayoutTests.swift */; };
+		CC32889B1D6E2BF200852C3B /* ASDKCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3288991D6E2B4A00852C3B /* ASDKCollectionViewController.swift */; };
+		CC32889E1D6E2EEC00852C3B /* FeedItemCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC32889C1D6E2ED400852C3B /* FeedItemCellNode.swift */; };
+		CCE72EFE1D6E5AEB0025FBD0 /* ASDKTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE72EFD1D6E5AEB0025FBD0 /* ASDKTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -348,6 +351,9 @@
 		0BFE789E1D2608BB0082A0DC /* ViewRecyclerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRecyclerTests.swift; sourceTree = "<group>"; };
 		7E0FBE841D3C4E2E008B0933 /* ConfigurableLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableLayout.swift; sourceTree = "<group>"; };
 		7EA3A6AA1CD93C60004C529C /* PositionedLayoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionedLayoutTests.swift; sourceTree = "<group>"; };
+		CC3288991D6E2B4A00852C3B /* ASDKCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASDKCollectionViewController.swift; sourceTree = "<group>"; };
+		CC32889C1D6E2ED400852C3B /* FeedItemCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedItemCellNode.swift; sourceTree = "<group>"; };
+		CCE72EFD1D6E5AEB0025FBD0 /* ASDKTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASDKTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -502,12 +508,15 @@
 			children = (
 				0B5ADBDA1CF5113F0056A568 /* BenchmarkViewController.swift */,
 				0B5ADBDC1CF511EE0056A568 /* CollectionViewController.swift */,
+				CC3288991D6E2B4A00852C3B /* ASDKCollectionViewController.swift */,
+				CCE72EFD1D6E5AEB0025FBD0 /* ASDKTableViewController.swift */,
 				0B5ADBC91CF504730056A568 /* DataBinder.swift */,
 				0B5ADBCB1CF50E2B0056A568 /* FeedItemAutoLayoutView.swift */,
 				0B5ADBC71CF504080056A568 /* FeedItemData.swift */,
 				0B5ADBC51CF500730056A568 /* FeedItemLayoutKitView.swift */,
 				0B5ADBC31CF500500056A568 /* FeedItemManualView.swift */,
 				0B5ADBD71CF510080056A568 /* FeedItemUIStackView.swift */,
+				CC32889C1D6E2ED400852C3B /* FeedItemCellNode.swift */,
 				0BF4E8E21CF5664000789511 /* Stopwatch.swift */,
 				0B71A7661CFA17D50064B4FB /* TableViewController.swift */,
 			);
@@ -1173,6 +1182,7 @@
 				0B53FADD1D413550007F83CD /* BatchUpdatesTableViewController.swift in Sources */,
 				0B5803CD1D404BE70094AB29 /* BatchUpdatesBaseViewController.swift in Sources */,
 				0B638B541CDA7BD5004270F6 /* LabledImageLayout.swift in Sources */,
+				CC32889E1D6E2EEC00852C3B /* FeedItemCellNode.swift in Sources */,
 				0B5ADBDB1CF5113F0056A568 /* BenchmarkViewController.swift in Sources */,
 				0BAAE1621CCBDA0F0046DF14 /* FeedBaseViewController.swift in Sources */,
 				0B5ADBC81CF504080056A568 /* FeedItemData.swift in Sources */,
@@ -1182,7 +1192,9 @@
 				0B63A91C1CD9653A009F3095 /* NestedCollectionViewController.swift in Sources */,
 				0B71A7671CFA17D50064B4FB /* TableViewController.swift in Sources */,
 				0B5ADBCC1CF50E2B0056A568 /* FeedItemAutoLayoutView.swift in Sources */,
+				CCE72EFE1D6E5AEB0025FBD0 /* ASDKTableViewController.swift in Sources */,
 				0B638B561CDA7C94004270F6 /* UrlImageLayout.swift in Sources */,
+				CC32889B1D6E2BF200852C3B /* ASDKCollectionViewController.swift in Sources */,
 				0BF4E8E31CF5664000789511 /* Stopwatch.swift in Sources */,
 				0B5803CB1D404B700094AB29 /* BatchUpdatesCollectionViewController.swift in Sources */,
 				0BA881BB1CF3F5C300081EBD /* ForegroundProfileViewController.swift in Sources */,

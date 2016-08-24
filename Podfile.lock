@@ -1,0 +1,24 @@
+PODS:
+  - AsyncDisplayKit/ASDealloc2MainObject (2.0-beta.1)
+  - AsyncDisplayKit/Core (2.0-beta.1):
+    - AsyncDisplayKit/ASDealloc2MainObject
+
+DEPENDENCIES:
+  - AsyncDisplayKit/Core (from `https://github.com/maicki/AsyncDisplayKit`, branch `ASTextNodeNoTextKitCreationOnConstrainedSizeChange`)
+
+EXTERNAL SOURCES:
+  AsyncDisplayKit:
+    :branch: ASTextNodeNoTextKitCreationOnConstrainedSizeChange
+    :git: https://github.com/maicki/AsyncDisplayKit
+
+CHECKOUT OPTIONS:
+  AsyncDisplayKit:
+    :commit: 4fa9f672980cca330fddb3fb93d2bfb23cea761a
+    :git: https://github.com/maicki/AsyncDisplayKit
+
+SPEC CHECKSUMS:
+  AsyncDisplayKit: 0bc09eccc8627e05983b89b9b01daf749c552eeb
+
+PODFILE CHECKSUM: f884c0e718dc3e44504701b3d35bbe5000a148ff
+
+COCOAPODS: 1.0.1

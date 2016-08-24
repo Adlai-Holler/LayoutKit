@@ -17,10 +17,8 @@ class CollectionViewController<ContentViewType: UIView where ContentViewType: Da
     let data: [ContentViewType.DataType]
     let flowLayout: UICollectionViewFlowLayout
     let manequinCell: CellType
-    let start: CFAbsoluteTime
 
     init(data: [ContentViewType.DataType]) {
-        self.start = CFAbsoluteTimeGetCurrent()
         self.data = data
         self.flowLayout = UICollectionViewFlowLayout()
         self.manequinCell = CellType(frame: CGRectZero)
