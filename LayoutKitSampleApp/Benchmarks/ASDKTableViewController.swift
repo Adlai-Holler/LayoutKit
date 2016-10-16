@@ -9,7 +9,7 @@
 import UIKit
 import AsyncDisplayKit
 
-final class ASDKTableViewController<ContentNodeType: ASCellNode where ContentNodeType: DataBinder>: ASViewController, ASTableDelegate, ASTableDataSource {
+final class ASDKTableViewController<ContentNodeType: ASCellNode>: ASViewController, ASTableDelegate, ASTableDataSource where ContentNodeType: DataBinder {
 
 	let data: [ContentNodeType.DataType]
 
@@ -25,8 +25,8 @@ final class ASDKTableViewController<ContentNodeType: ASCellNode where ContentNod
         fatalError("init(coder:) has not been implemented")
     }
 	
-	func tableView(tableView: ASTableView, nodeBlockForRowAtIndexPath indexPath: NSIndexPath) -> ASCellNodeBlock {
-		let item = data[indexPath.item]
+	func tableView(_ tableView: ASTableView, nodeBlockForRowAtIndexPath indexPath: IndexPath) -> ASCellNodeBlock {
+		let item = data[(indexPath as NSIndexPath).item]
 		return {
 			let node = ContentNodeType()
 			node.setData(item)
@@ -34,11 +34,11 @@ final class ASDKTableViewController<ContentNodeType: ASCellNode where ContentNod
 		}
 	}
 	
-	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return data.count
 	}
 	
-	private var hasLaidOut = false
+	fileprivate var hasLaidOut = false
 	override func viewWillLayoutSubviews() {
 		if hasLaidOut == true { return }
 		hasLaidOut = true

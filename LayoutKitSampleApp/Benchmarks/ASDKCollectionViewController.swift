@@ -9,7 +9,7 @@
 import UIKit
 import AsyncDisplayKit
 
-final class ASDKCollectionViewController<ContentNodeType: ASCellNode where ContentNodeType: DataBinder>: ASViewController, ASCollectionDelegate, ASCollectionDataSource {
+final class ASDKCollectionViewController<ContentNodeType: ASCellNode>: ASViewController, ASCollectionDelegate, ASCollectionDataSource where ContentNodeType: DataBinder {
 
 	let data: [ContentNodeType.DataType]
     let flowLayout: UICollectionViewFlowLayout
@@ -27,8 +27,8 @@ final class ASDKCollectionViewController<ContentNodeType: ASCellNode where Conte
         fatalError("init(coder:) has not been implemented")
     }
 	
-	func collectionView(collectionView: ASCollectionView, nodeBlockForItemAtIndexPath indexPath: NSIndexPath) -> ASCellNodeBlock {
-		let item = data[indexPath.item]
+	func collectionView(_ collectionView: ASCollectionView, nodeBlockForItemAtIndexPath indexPath: IndexPath) -> ASCellNodeBlock {
+		let item = data[(indexPath as NSIndexPath).item]
 		return {
 			let node = ContentNodeType()
 			node.setData(item)
@@ -36,16 +36,16 @@ final class ASDKCollectionViewController<ContentNodeType: ASCellNode where Conte
 		}
 	}
 	
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.count
     }
 	
-	func collectionView(collectionView: ASCollectionView, constrainedSizeForNodeAtIndexPath indexPath: NSIndexPath) -> ASSizeRange {
+	func collectionView(_ collectionView: ASCollectionView, constrainedSizeForNodeAtIndexPath indexPath: IndexPath) -> ASSizeRange {
 		let width = collectionView.bounds.width
 		return ASSizeRange(min: CGSize(width: width, height: 0), max: CGSize(width: width, height: .max))
 	}
 	
-	private var hasLaidOut = false
+	fileprivate var hasLaidOut = false
 	override func viewWillLayoutSubviews() {
 		if hasLaidOut == true { return }
 		hasLaidOut = true

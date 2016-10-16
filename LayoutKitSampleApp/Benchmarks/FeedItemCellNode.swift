@@ -40,7 +40,7 @@ final class FeedItemCellNode: ASCellNode, DataBinder {
 		likeNode.attributedText = likeLabelText
 	}
 	
-	func setData(data: FeedItemData) {
+	func setData(_ data: FeedItemData) {
 		actionNode.attributedText = NSAttributedString(string: data.actionText)
 		posterNameNode.attributedText = NSAttributedString(string: data.posterName)
 		posterHeadlineNode.attributedText = NSAttributedString(string: data.posterHeadline)
@@ -55,7 +55,7 @@ final class FeedItemCellNode: ASCellNode, DataBinder {
 		contentImageNode.image = UIImage(named: "350x200.png")
 	}
 	
-	override func layoutSpecThatFits(constrainedSize: ASSizeRange) -> ASLayoutSpec {
+	override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
 		return ASStackLayoutSpec(
 			direction: .Vertical,
 			spacing: 4,
