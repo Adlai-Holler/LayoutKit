@@ -30,7 +30,7 @@ final class FeedItemCellNode: ASCellNode, DataBinder {
 	
 	override init() {
 		super.init()
-		usesImplicitHierarchyManagement = true
+		automaticallyManagesSubnodes = true
 		optionsNode.attributedText = optionsLabelText
 		commentNode.backgroundColor = commentBGColor
 		commentNode.attributedText = commentLabelText
@@ -57,29 +57,29 @@ final class FeedItemCellNode: ASCellNode, DataBinder {
 	
 	override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
 		return ASStackLayoutSpec(
-			direction: .Vertical,
+			direction: .vertical,
 			spacing: 4,
-			justifyContent: .Start,
-			alignItems: .Stretch,
+			justifyContent: .start,
+			alignItems: .stretch,
 			children: [
 				ASStackLayoutSpec(
-					direction: .Horizontal,
+					direction: .horizontal,
 					spacing: 0,
-					justifyContent: .SpaceBetween,
-					alignItems: .Center,
+					justifyContent: .spaceBetween,
+					alignItems: .center,
 					children: [ actionNode, optionsNode ]),
 				ASStackLayoutSpec(
-					direction: .Horizontal,
+					direction: .horizontal,
 					spacing: 8,
-					justifyContent: .Start,
-					alignItems: .Center,
+					justifyContent: .start,
+					alignItems: .center,
 					children: [
 					posterImageNode,
 					ASStackLayoutSpec(
-						direction: .Vertical,
+						direction: .vertical,
 						spacing: 0,
-						justifyContent: .SpaceBetween,
-						alignItems: .Start,
+						justifyContent: .spaceBetween,
+						alignItems: .start,
 						children: [
 							posterNameNode,
 							posterHeadlineNode,
@@ -89,16 +89,16 @@ final class FeedItemCellNode: ASCellNode, DataBinder {
 				contentTitleNode,
 				contentDomainNode,
 				ASStackLayoutSpec(
-					direction: .Horizontal,
+					direction: .horizontal,
 					spacing: 0,
-					justifyContent: .SpaceBetween,
-					alignItems: .Center,
+					justifyContent: .spaceBetween,
+					alignItems: .center,
 					children: [ likeNode, commentNode, shareNode ]),
 				ASStackLayoutSpec(
-					direction: .Horizontal,
+					direction: .horizontal,
 					spacing: 8,
-					justifyContent: .Start,
-					alignItems: .Center,
+					justifyContent: .start,
+					alignItems: .center,
 					children: [ actorImageNode, actorCommentNode ]),
 			])
 	}

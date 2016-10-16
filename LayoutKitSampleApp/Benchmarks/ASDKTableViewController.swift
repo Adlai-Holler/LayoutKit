@@ -9,13 +9,13 @@
 import UIKit
 import AsyncDisplayKit
 
-final class ASDKTableViewController<ContentNodeType: ASCellNode>: ASViewController, ASTableDelegate, ASTableDataSource where ContentNodeType: DataBinder {
+final class ASDKTableViewController<ContentNodeType: ASCellNode>: ASViewController<ASTableNode>, ASTableDelegate, ASTableDataSource where ContentNodeType: DataBinder {
 
 	let data: [ContentNodeType.DataType]
 
     init(data: [ContentNodeType.DataType]) {
         self.data = data
-		let table = ASTableNode(style: .Plain)
+		let table = ASTableNode(style: .plain)
         super.init(node: table)
 		table.delegate = self
 		table.dataSource = self
@@ -24,8 +24,8 @@ final class ASDKTableViewController<ContentNodeType: ASCellNode>: ASViewControll
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-	
-	func tableView(_ tableView: ASTableView, nodeBlockForRowAtIndexPath indexPath: IndexPath) -> ASCellNodeBlock {
+
+	func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
 		let item = data[(indexPath as NSIndexPath).item]
 		return {
 			let node = ContentNodeType()
@@ -33,8 +33,8 @@ final class ASDKTableViewController<ContentNodeType: ASCellNode>: ASViewControll
 			return node
 		}
 	}
-	
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+	func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
 		return data.count
 	}
 	
@@ -42,8 +42,8 @@ final class ASDKTableViewController<ContentNodeType: ASCellNode>: ASViewControll
 	override func viewWillLayoutSubviews() {
 		if hasLaidOut == true { return }
 		hasLaidOut = true
-		let table = view as! ASTableView
-		table.reloadDataImmediately()
-		assert(table.numberOfRowsInSection(0) == data.count)
+		node.reloadData()
+		node.waitUntilAllUpdatesAreCommitted()
+		assert(node.numberOfRows(inSection: 0) == data.count)
 	}
 }

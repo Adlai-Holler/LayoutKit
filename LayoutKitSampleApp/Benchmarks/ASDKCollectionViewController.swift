@@ -9,7 +9,7 @@
 import UIKit
 import AsyncDisplayKit
 
-final class ASDKCollectionViewController<ContentNodeType: ASCellNode>: ASViewController, ASCollectionDelegate, ASCollectionDataSource where ContentNodeType: DataBinder {
+final class ASDKCollectionViewController<ContentNodeType: ASCellNode>: ASViewController<ASCollectionNode>, ASCollectionDelegate, ASCollectionDataSource where ContentNodeType: DataBinder {
 
 	let data: [ContentNodeType.DataType]
     let flowLayout: UICollectionViewFlowLayout
@@ -26,8 +26,8 @@ final class ASDKCollectionViewController<ContentNodeType: ASCellNode>: ASViewCon
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-	
-	func collectionView(_ collectionView: ASCollectionView, nodeBlockForItemAtIndexPath indexPath: IndexPath) -> ASCellNodeBlock {
+
+	func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
 		let item = data[(indexPath as NSIndexPath).item]
 		return {
 			let node = ContentNodeType()
@@ -35,22 +35,23 @@ final class ASDKCollectionViewController<ContentNodeType: ASCellNode>: ASViewCon
 			return node
 		}
 	}
-	
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
-    }
-	
-	func collectionView(_ collectionView: ASCollectionView, constrainedSizeForNodeAtIndexPath indexPath: IndexPath) -> ASSizeRange {
-		let width = collectionView.bounds.width
-		return ASSizeRange(min: CGSize(width: width, height: 0), max: CGSize(width: width, height: .max))
+
+	func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
+		return data.count
+	}
+
+	func collectionNode(_ collectionNode: ASCollectionNode, constrainedSizeForItemAt indexPath: IndexPath) -> ASSizeRange {
+		let width = view.bounds.width
+		return ASSizeRange(min: CGSize(width: width, height: 0), max: CGSize(width: width, height: .greatestFiniteMagnitude))
 	}
 	
 	fileprivate var hasLaidOut = false
 	override func viewWillLayoutSubviews() {
 		if hasLaidOut == true { return }
 		hasLaidOut = true
-		let collection = view as! ASCollectionView
-		collection.reloadDataImmediately()
-		assert(collection.numberOfItemsInSection(0) == data.count)
+
+		node.reloadData()
+		node.view.waitUntilAllUpdatesAreCommitted();
+		assert(node.numberOfItems(inSection: 0) == data.count)
 	}
 }
