@@ -27,6 +27,7 @@ final class FeedItemCellNode: ASCellNode, DataBinder {
 	let shareNode = ASTextNode()
 	let actorImageNode = ASImageNode()
 	let actorCommentNode = ASTextNode()
+  static var cache = NSCache<NSString, UIImage>()
 	
 	override init() {
 		super.init()
@@ -50,9 +51,23 @@ final class FeedItemCellNode: ASCellNode, DataBinder {
 		contentDomainNode.attributedText = NSAttributedString(string: data.contentDomain)
 		actorCommentNode.attributedText = NSAttributedString(string: data.actorComment)
 		// Pretend these are dynamic images
-		actorImageNode.image = UIImage(named: "50x50.png")
-		posterImageNode.image = UIImage(named: "50x50.png")
-		contentImageNode.image = UIImage(named: "350x200.png")
+    
+		var smallImage = FeedItemCellNode.cache.object(forKey:"50x50.png")
+		var largeImage = FeedItemCellNode.cache.object(forKey:"350x200.png")
+
+		if (smallImage == nil) {
+      smallImage = UIImage(named: "50x50.png")
+      FeedItemCellNode.cache.setObject(smallImage!, forKey: "50x50.png")
+		}
+
+		if (largeImage == nil) {
+      largeImage = UIImage(named: "350x200.png")
+      FeedItemCellNode.cache.setObject(largeImage!, forKey: "350x200.png")
+		}
+
+		actorImageNode.image = smallImage
+		posterImageNode.image = smallImage
+		contentImageNode.image = largeImage
 	}
 	
 	override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
