@@ -38,6 +38,11 @@ class BenchmarkViewController: UITableViewController {
             let data = FeedItemData.generate(count: viewCount)
             return CollectionViewController<FeedItemManualView>(data: data)
         }),
+        
+        ViewControllerData(title: "UICollectionView AsyncDisplayKit feed", factoryBlock: { viewCount in
+			let data = FeedItemData.generate(count: viewCount)
+			return ASDKCollectionViewController<FeedItemCellNode>(data: data)
+		}),
 
         ViewControllerData(title: "UITableView UIStack feed", factoryBlock: { viewCount in
             if #available(iOS 9.0, *) {
@@ -62,7 +67,12 @@ class BenchmarkViewController: UITableViewController {
         ViewControllerData(title: "UITableView Manual Layout feed", factoryBlock: { viewCount in
             let data = FeedItemData.generate(count: viewCount)
             return TableViewController<FeedItemManualView>(data: data)
-        })
+        }),
+        
+        ViewControllerData(title: "UITableView AsyncDisplayKit feed", factoryBlock: { viewCount in
+			let data = FeedItemData.generate(count: viewCount)
+			return ASDKTableViewController<FeedItemCellNode>(data: data)
+		}),
     ]
 
     convenience init() {
